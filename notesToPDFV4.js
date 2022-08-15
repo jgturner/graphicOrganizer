@@ -45,6 +45,7 @@ window.addEventListener("load", () => {
 //NEW DOCUMENT CLEAR LOCALSTORAGE
 newNoteBtn.addEventListener("click", (ev) => {
 //   localStorage.clear();
+  ev.preventDefault();
 
   //RESET VALUES
   inputNotes.forEach((el, i) => {
