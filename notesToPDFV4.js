@@ -49,7 +49,7 @@ newNoteBtn.addEventListener("click", (ev) => {
 
   //RESET VALUES
   inputNotes.forEach((el, i) => {
-    localStorage.setItem(`notes${i}`, "");
+     localStorage.removeItem(`notes${i}`);
     inputNotes[i].value = "";
     inputAuthor.value = "";
     inputTitle.value = "";
