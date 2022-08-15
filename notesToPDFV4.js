@@ -18,7 +18,6 @@ inputAuthor.addEventListener("keyup", (ev) => {
 inputTitle.addEventListener("keyup", (ev) => {
   ev.preventDefault();
   localStorage.setItem("title", inputTitle.value.trim());
-  console.log(localStorage.getItem("title"));
 });
 
 //SET TITLES FOR EACH NOTE AREA
@@ -46,13 +45,15 @@ window.addEventListener("load", () => {
 newNoteBtn.addEventListener("click", (ev) => {
   ev.preventDefault();
   // localStorage.clear();
+  localStorage.removeItem(`author`);
+  localStorage.removeItem(`title`);
+  inputAuthor.value = "";
+  inputTitle.value = "";
 
   //RESET VALUES
   inputNotes.forEach((el, i) => {
     localStorage.removeItem(`notes${i}`);
     inputNotes[i].value = "";
-    inputAuthor.value = "";
-    inputTitle.value = "";
   });
   //GET TITLES
   inputNotes.forEach((el, i) => {
