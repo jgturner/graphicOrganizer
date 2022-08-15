@@ -23,7 +23,7 @@ inputTitle.addEventListener("keyup", (ev) => {
 
 //SET TITLES FOR EACH NOTE AREA
 inputNotes.forEach((el, i) => {
-  localStorage.setItem(`titles${i}`, inputTitles[i].textContent);
+  localStorage.setItem(`titles${i}`, inputTitles[i].textContent.trim());
 });
 
 inputNotes.forEach((el, i) => {
@@ -36,20 +36,20 @@ inputNotes.forEach((el, i) => {
 //POPULATE TEXTAREA FROM LOCAL STORE ON RELOAD/REFRESH
 window.addEventListener("load", () => {
   inputNotes.forEach((el, i) => {
-    inputNotes[i].value = localStorage.getItem(`notes${i}`).trim();
-    inputAuthor.value = localStorage.getItem(`author`).trim();
-    inputTitle.value = localStorage.getItem(`title`).trim();
+    inputNotes[i].value = localStorage.getItem(`notes${i}`);
+    inputAuthor.value = localStorage.getItem(`author`);
+    inputTitle.value = localStorage.getItem(`title`);
   });
 });
 
 //NEW DOCUMENT CLEAR LOCALSTORAGE
 newNoteBtn.addEventListener("click", (ev) => {
-//   localStorage.clear();
   ev.preventDefault();
+  // localStorage.clear();
 
   //RESET VALUES
   inputNotes.forEach((el, i) => {
-     localStorage.removeItem(`notes${i}`);
+    localStorage.removeItem(`notes${i}`);
     inputNotes[i].value = "";
     inputAuthor.value = "";
     inputTitle.value = "";
@@ -65,9 +65,9 @@ exportNotes.addEventListener("click", (ev) => {
   ev.preventDefault();
   let output = [];
   inputNotes.forEach((el, i) => {
-    let notes = `${localStorage.getItem(`notes${i}`).trim()}`;
+    let notes = `${localStorage.getItem(`notes${i}`)}`;
     if (notes !== "" && notes !== "null") {
-      let title = `${localStorage.getItem(`titles${i}`).trim()}`;
+      let title = `${localStorage.getItem(`titles${i}`)}`;
       output.push({
         text: `${title}`,
         style: "header",
