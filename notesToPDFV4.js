@@ -44,10 +44,11 @@ window.addEventListener("load", () => {
 
 //NEW DOCUMENT CLEAR LOCALSTORAGE
 newNoteBtn.addEventListener("click", (ev) => {
-  localStorage.clear();
+//   localStorage.clear();
 
   //RESET VALUES
   inputNotes.forEach((el, i) => {
+    localStorage.setItem(`notes${i}`, "");
     inputNotes[i].value = "";
     inputAuthor.value = "";
     inputTitle.value = "";
